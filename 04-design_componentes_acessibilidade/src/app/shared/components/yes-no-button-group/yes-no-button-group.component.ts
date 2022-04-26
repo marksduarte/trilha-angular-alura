@@ -7,6 +7,7 @@ import {
   Output,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import * as uuid from 'uuid';
 
 /**
  * Para que nosso componente interaja com o ReactiveForms, devemos implementar a interface ControlValueAccessor.
@@ -29,11 +30,14 @@ export class YesNoButtonGroupComponent implements OnInit, ControlValueAccessor {
   @Input() public value: string = null;
   @Input() public label = '';
   @Output() public valueChange = new EventEmitter<string>();
+  public id: string = null;
   public options = YesNoOptionsEnum;
   public onChange = (value: string) => {};
   public onTouched = (value: string) => {};
 
-  constructor() {}
+  constructor() {
+    this.id = `yes-no-button-group-${uuid.v1()}`;
+  }
 
   ngOnInit(): void {}
 
