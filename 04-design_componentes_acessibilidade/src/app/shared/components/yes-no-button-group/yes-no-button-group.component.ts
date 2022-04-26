@@ -7,7 +7,7 @@ import {
   Output,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import * as uuid from 'uuid';
+import { UniqueIdService } from '../../services/unique-id/unique-id.service';
 
 /**
  * Para que nosso componente interaja com o ReactiveForms, devemos implementar a interface ControlValueAccessor.
@@ -35,8 +35,10 @@ export class YesNoButtonGroupComponent implements OnInit, ControlValueAccessor {
   public onChange = (value: string) => {};
   public onTouched = (value: string) => {};
 
-  constructor() {
-    this.id = `yes-no-button-group-${uuid.v1()}`;
+  constructor(private uniqueIdService: UniqueIdService) {
+    this.id = this.uniqueIdService.generateUniqueIdWithPrefix(
+      'yes-no-button-group'
+    );
   }
 
   ngOnInit(): void {}
