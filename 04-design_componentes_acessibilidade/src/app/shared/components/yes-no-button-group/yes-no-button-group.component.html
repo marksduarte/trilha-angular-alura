@@ -1,22 +1,33 @@
-<div role="radiogroup" [attr.aria-labelledby]="id" class="button-group">
+<div
+  appKeyboardMng
+  role="radiogroup"
+  [attr.aria-labelledby]="id"
+  class="button-group"
+>
   <label [attr.id]="id" class="label">{{ label }}</label>
   <button
+    appKeyboardMngItem
     role="radio"
-    [attr.aria-checked]="isValue(options.YES)"
     class="button button-yes"
-    [class.button-pressed]="isValue(options.YES)"
     type="button"
+    [attr.aria-checked]="isValue(options.YES)"
+    [attr.tabindex]="isValue(options.YES) || value === null ? 0 : -1"
+    [class.button-pressed]="isValue(options.YES)"
     (click)="activate(options.YES)"
+    (focused)="activate(options.YES)"
   >
     Yes
   </button>
   <button
+    appKeyboardMngItem
     role="radio"
-    [attr.aria-checked]="isValue(options.YES)"
     class="button button-no"
-    [class.button-pressed]="isValue(options.NO)"
     type="button"
+    [attr.aria-checked]="isValue(options.NO)"
+    [attr.tabindex]="isValue(options.NO) || value === null ? 0 : -1"
+    [class.button-pressed]="isValue(options.NO)"
     (click)="activate(options.NO)"
+    (focused)="activate(options.NO)"
   >
     No
   </button>
