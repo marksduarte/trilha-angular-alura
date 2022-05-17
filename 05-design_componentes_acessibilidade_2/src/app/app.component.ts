@@ -10,7 +10,7 @@ import {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  @ViewChild('modal') modalTemplateRef: TemplateRef<any>;
+  @ViewChild('modal') public modalTemplateRef: TemplateRef<any>;
 
   title = 'a11y-p2';
   firstName = 'Marks';

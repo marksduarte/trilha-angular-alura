@@ -19,6 +19,12 @@
 
   <div class="button-group">
     <button type="button" class="button button-primary">Submit</button>
-    <button type="button" class="button button-secondary">Cancel</button>
+    <button
+      type="button"
+      class="button button-secondary"
+      (click)="modalRef.close()"
+    >
+      Cancel
+    </button>
   </div>
 </ng-template>
